@@ -1,0 +1,7 @@
+﻿  MyForm.cpp
+  aldlist.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
+Framework.obj : warning LNK4248: jeton typeref non résolu (0100001C) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
+aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001B) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
+Framework.obj : warning LNK4248: jeton typeref non résolu (0100001B) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
+aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001C) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
+  WinformCplusplus.vcxproj -> C:\Users\Etudiant1\Downloads\Winform_OpenAL_POC\Debug\WinformCplusplus.exe

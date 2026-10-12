@@ -1,0 +1,3 @@
+C:\Users\Etudiant1\Downloads\Winform_OpenAL_POC\WinformCplusplus\Debug\WinformCplusplus.vcxproj.AssemblyReference.cache
+C:\Users\Etudiant1\Downloads\Winform_OpenAL_POC\WinformCplusplus\Debug\WinformCplusplus.MyForm.resources
+C:\Users\Etudiant1\Downloads\Winform_OpenAL_POC\WinformCplusplus\Debug\WinformCplusplus.vcxproj.GenerateResource.cache
