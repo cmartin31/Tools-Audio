@@ -57,9 +57,4 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx">
-      <Filter>Fichiers de ressources</Filter>
-    </EmbeddedResource>
-  </ItemGroup>
 </Project>

@@ -1,2 +1,4 @@
 D:\SVN\Eleves\Tools\Winform_OpenAL_POC\WinformCplusplus\Debug\WinformCplusplus.vcxproj.AssemblyReference.cache
 C:\Users\Etudiant1\Documents\GitHub\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Debug\WinformCplusplus.vcxproj.AssemblyReference.cache
+C:\Users\Etudiant1\Documents\GitHub\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Debug\WinformCplusplus.MyForm.resources
+C:\Users\Etudiant1\Documents\GitHub\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Debug\WinformCplusplus.vcxproj.GenerateResource.cache
