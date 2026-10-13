@@ -38,6 +38,8 @@ System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Objec
 		Stop();
 		button1->Text = L"▶";
 		Play(filePath);
+		String^ musicName = System::IO::Path::GetFileNameWithoutExtension(ofd->FileName);
+		textBox1->Text = musicName;
 		trackBar1->Maximum = (int)(GetDuration() * 1000);
 		trackBar1->Value = 0;
 	}

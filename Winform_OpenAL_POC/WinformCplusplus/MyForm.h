@@ -61,6 +61,7 @@ namespace WinformCplusplus {
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::Windows::Forms::Timer^ timer2;
+	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -97,6 +98,7 @@ namespace WinformCplusplus {
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -181,6 +183,7 @@ namespace WinformCplusplus {
 			// 
 			// trackBar1
 			// 
+			this->trackBar1->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->trackBar1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->trackBar1->Location = System::Drawing::Point(110, 141);
 			this->trackBar1->Maximum = 10000;
@@ -234,11 +237,23 @@ namespace WinformCplusplus {
 			this->timer1->Enabled = true;
 			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
 			// 
+			// textBox1
+			// 
+			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->textBox1->Location = System::Drawing::Point(155, 102);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(405, 20);
+			this->textBox1->TabIndex = 8;
+			this->textBox1->Text = L"Music Name";
+			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(672, 357);
+			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->trackBar2);
@@ -249,6 +264,7 @@ namespace WinformCplusplus {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
 			this->Text = L"Open AL Ambience Player POC";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
@@ -273,5 +289,9 @@ namespace WinformCplusplus {
 	private: System::Void trackBar1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 	
 private: System::Void trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e);
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
