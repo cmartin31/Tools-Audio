@@ -205,3 +205,9 @@ System::Void WinformCplusplus::MyForm::savePlaylistToolStripMenuItem_Click(Syste
 		SavePlayList();
 	}
 }
+
+System::Void WinformCplusplus::MyForm::button4_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	if (comboBox1->SelectedIndex > 0)SelectTrack(comboBox1->SelectedIndex - 1);
+	comboBox1->SelectedIndex--;
+}

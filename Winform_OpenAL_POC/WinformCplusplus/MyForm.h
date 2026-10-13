@@ -243,6 +243,7 @@ namespace WinformCplusplus {
 			this->button4->TabIndex = 7;
 			this->button4->Text = L"⏮";
 			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// timer1
 			// 
@@ -335,5 +336,6 @@ namespace WinformCplusplus {
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void savePlaylistToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
-	};
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e);
+};
 }
