@@ -195,26 +195,6 @@ int Play(const char* fileName)
 	alSourcei(g_source, AL_LOOPING, 1);
 
 
-	/*
-	do
-	{
-		Sleep(100);
-		ALFWprintf(".");
-		// Get Source State
-		alGetSourcei(uiSource, AL_SOURCE_STATE, &iState);
-	} while (iState == AL_PLAYING);
-	*/
-
-	// Clean up by deleting Source(s) and Buffer(s)
-	/*
-	alSourceStop(uiSource);
-	alDeleteSources(1, &uiSource);
-	alDeleteBuffers(1, &uiBuffer);
-
-	ALFWShutdownOpenAL();
-
-	ALFWShutdown();
-	*/
 	return 0;
 }
 
