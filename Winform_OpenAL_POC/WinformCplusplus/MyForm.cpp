@@ -29,10 +29,14 @@ System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Objec
 {
 	OpenFileDialog^ ofd = gcnew OpenFileDialog();
 
+	ofd->Filter =  "ogg/wav files (*.ogg);(*.wav)|*.ogg;*.wav|All files (*.*)|*.*" ;
+
 	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		msclr::interop::marshal_context context;
 		const char* filePath = context.marshal_as<const char*>(ofd->FileName);
+		Stop();
+		button1->Text = L"▶";
 		Play(filePath);
 		trackBar1->Maximum = (int)(GetDuration() * 1000);
 		trackBar1->Value = 0;
