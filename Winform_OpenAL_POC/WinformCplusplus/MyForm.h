@@ -124,7 +124,7 @@ namespace WinformCplusplus {
 			this->button1->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(269, 189);
+			this->button1->Location = System::Drawing::Point(268, 249);
 			this->button1->Margin = System::Windows::Forms::Padding(0);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(60, 60);
@@ -184,7 +184,7 @@ namespace WinformCplusplus {
 			this->button2->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(344, 189);
+			this->button2->Location = System::Drawing::Point(343, 249);
 			this->button2->Margin = System::Windows::Forms::Padding(0);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(60, 60);
@@ -195,12 +195,12 @@ namespace WinformCplusplus {
 			// 
 			// trackBar1
 			// 
-			this->trackBar1->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->trackBar1->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->trackBar1->Location = System::Drawing::Point(110, 141);
+			this->trackBar1->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->trackBar1->Location = System::Drawing::Point(0, 312);
 			this->trackBar1->Maximum = 10000;
 			this->trackBar1->Name = L"trackBar1";
-			this->trackBar1->Size = System::Drawing::Size(485, 45);
+			this->trackBar1->Size = System::Drawing::Size(672, 45);
 			this->trackBar1->TabIndex = 4;
 			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar1_Scroll);
 			this->trackBar1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::trackBar1_MouseDown);
@@ -208,7 +208,7 @@ namespace WinformCplusplus {
 			// 
 			// trackBar2
 			// 
-			this->trackBar2->Location = System::Drawing::Point(12, 241);
+			this->trackBar2->Location = System::Drawing::Point(12, 46);
 			this->trackBar2->Maximum = 100;
 			this->trackBar2->Name = L"trackBar2";
 			this->trackBar2->Orientation = System::Windows::Forms::Orientation::Vertical;
@@ -222,7 +222,7 @@ namespace WinformCplusplus {
 			this->button3->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(422, 189);
+			this->button3->Location = System::Drawing::Point(421, 249);
 			this->button3->Margin = System::Windows::Forms::Padding(0);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(60, 60);
@@ -237,7 +237,7 @@ namespace WinformCplusplus {
 			this->button4->BackColor = System::Drawing::SystemColors::Menu;
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(197, 189);
+			this->button4->Location = System::Drawing::Point(196, 249);
 			this->button4->Margin = System::Windows::Forms::Padding(0);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(60, 60);
@@ -255,7 +255,7 @@ namespace WinformCplusplus {
 			// 
 			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->textBox1->Enabled = false;
-			this->textBox1->Location = System::Drawing::Point(156, 114);
+			this->textBox1->Location = System::Drawing::Point(148, 27);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(405, 20);
 			this->textBox1->TabIndex = 8;
@@ -274,7 +274,7 @@ namespace WinformCplusplus {
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(156, 114);
+			this->comboBox1->Location = System::Drawing::Point(148, 27);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(420, 21);
 			this->comboBox1->TabIndex = 10;
