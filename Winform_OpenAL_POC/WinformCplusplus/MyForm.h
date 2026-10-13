@@ -30,6 +30,8 @@ namespace WinformCplusplus {
 			//TODO: ajoutez ici le code du constructeur
 			//
 			init();
+			currentPlaylist = gcnew Playlist();
+			RefreshComboBox();
 		}
 
 
@@ -66,6 +68,8 @@ namespace WinformCplusplus {
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: Playlist^ currentPlaylist;
+	private: System::String^ currentPlaylistPath;
 
 	private: System::ComponentModel::IContainer^ components;
 
@@ -161,6 +165,7 @@ namespace WinformCplusplus {
 			this->savePlaylistToolStripMenuItem->Name = L"savePlaylistToolStripMenuItem";
 			this->savePlaylistToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			this->savePlaylistToolStripMenuItem->Text = L"Save Playlist";
+			this->savePlaylistToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::savePlaylistToolStripMenuItem_Click);
 			// 
 			// addPlaylistToolStripMenuItem
 			// 
@@ -248,7 +253,7 @@ namespace WinformCplusplus {
 			// 
 			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->textBox1->Enabled = false;
-			this->textBox1->Location = System::Drawing::Point(156, 115);
+			this->textBox1->Location = System::Drawing::Point(156, 114);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(405, 20);
 			this->textBox1->TabIndex = 8;
@@ -264,13 +269,13 @@ namespace WinformCplusplus {
 			// comboBox1
 			// 
 			this->comboBox1->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Location = System::Drawing::Point(156, 114);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(420, 21);
 			this->comboBox1->TabIndex = 10;
-			this->comboBox1->Text = L"A mettre derriere";
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::comboBox1_SelectedIndexChanged);
 			// 
 			// MyForm
@@ -306,7 +311,11 @@ namespace WinformCplusplus {
 
 	private: System::Void fichierToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {}
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void RefreshComboBox();
+	private: System::Void AddTrack();
+	private: bool isRefreshingCombo;
+
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e);
@@ -323,5 +332,6 @@ namespace WinformCplusplus {
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+	private: System::Void savePlaylistToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }

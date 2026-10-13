@@ -29,7 +29,7 @@ System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Objec
 {
 	OpenFileDialog^ ofd = gcnew OpenFileDialog();
 
-	ofd->Filter =  "ogg/wav files (*.ogg);(*.wav)|*.ogg;*.wav|All files (*.*)|*.*" ;
+	ofd->Filter = "ogg/wav files (*.ogg);(*.wav)|*.ogg;*.wav|All files (*.*)|*.*";
 
 	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
@@ -43,6 +43,60 @@ System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Objec
 		trackBar1->Maximum = (int)(GetDuration() * 1000);
 		trackBar1->Value = 0;
 	}
+}
+
+System::Void WinformCplusplus::MyForm::comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e)
+{
+	if (isRefreshingCombo) return;
+
+	int index = comboBox1->SelectedIndex;
+	if (index < 0) return;   
+
+	if (index == currentPlaylist->Tracks->Count)
+	{
+		AddTrack();                  
+		comboBox1->SelectedIndex = -1;
+	}
+
+}
+
+System::Void WinformCplusplus::MyForm::RefreshComboBox()
+{
+	isRefreshingCombo = true;
+
+	comboBox1->Items->Clear();
+	for each (String ^ track in currentPlaylist->Tracks)
+		comboBox1->Items->Add(System::IO::Path::GetFileNameWithoutExtension(track));
+
+	comboBox1->Items->Add("+ Ajouter une musique");   
+
+	isRefreshingCombo = false;
+}
+
+System::Void WinformCplusplus::MyForm::AddTrack()
+{
+	String^ musicDir = System::IO::Path::Combine(Application::StartupPath, "Data Musique");
+
+	OpenFileDialog^ ofd = gcnew OpenFileDialog();
+	ofd->InitialDirectory = musicDir;
+	ofd->Filter = "Audio (*.wav;*.ogg)|*.wav;*.ogg";
+	ofd->Multiselect = true;
+
+	if (ofd->ShowDialog() != System::Windows::Forms::DialogResult::OK)
+		return;   
+
+	String^ root = Application::StartupPath + "\\";
+
+	for each (String ^ file in ofd->FileNames)
+	{
+		String^ path = file;
+		if (path->StartsWith(root, StringComparison::OrdinalIgnoreCase))
+			path = path->Substring(root->Length);
+
+		currentPlaylist->Tracks->Add(path);
+	}
+
+	RefreshComboBox();
 }
 
 System::Void WinformCplusplus::MyForm::button2_Click_1(System::Object^ sender, System::EventArgs^ e)
@@ -76,7 +130,9 @@ System::Void WinformCplusplus::MyForm::trackBar1_MouseUp(System::Object^ sender,
 
 System::Void WinformCplusplus::MyForm::SavePlayList()
 {
-
+	auto serializer = gcnew System::Web::Script::Serialization::JavaScriptSerializer();
+	String^ json = serializer->Serialize(currentPlaylist);
+	System::IO::File::WriteAllText(currentPlaylistPath, json);
 }
 
 System::Void WinformCplusplus::MyForm::LoadPlaylist(String^ filePath)
@@ -88,4 +144,22 @@ System::Void WinformCplusplus::MyForm::trackBar2_Scroll(System::Object^ sender, 
 {
 	float v = trackBar2->Value / 100.0f;
 	SetVolume(v * v);
+}
+
+System::Void WinformCplusplus::MyForm::savePlaylistToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	String^ jsonDir = System::IO::Path::Combine(Application::StartupPath, "Data Json");
+	System::IO::Directory::CreateDirectory(jsonDir);
+
+	SaveFileDialog^ sfd = gcnew SaveFileDialog();
+	sfd->InitialDirectory = jsonDir;
+	sfd->Filter = "Playlist (*.json)|*.json";
+	sfd->DefaultExt = "json";
+
+	if (sfd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		currentPlaylistPath = sfd->FileName;
+		currentPlaylist->Name = System::IO::Path::GetFileNameWithoutExtension(sfd->FileName);
+		SavePlayList();
+	}
 }
