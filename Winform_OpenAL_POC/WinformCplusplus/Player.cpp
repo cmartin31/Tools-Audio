@@ -78,10 +78,7 @@ int Play(const char * fileName)
 	alSourcei(g_source, AL_BUFFER, g_buffer);
 	//pour boucler un son
 	alSourcei(g_source, AL_LOOPING, 1);
-	// Play Source
-	alSourcePlay(g_source);
 
-	Pause();
 
 	/*
 	do
