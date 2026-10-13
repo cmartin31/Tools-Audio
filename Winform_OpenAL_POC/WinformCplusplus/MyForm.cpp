@@ -11,6 +11,18 @@ void Main(array<String^>^ args) {
 	Application::Run(% form);
 }
 
+System::Void WinformCplusplus::MyForm::SelectTrack(int index)
+{
+	if (index < 0 || index >= currentPlaylist->Tracks->Count)
+	{
+		textBox1->Text = "No Current Music";
+		currentIndex = -1;
+		return;
+	}
+
+	currentIndex = index;
+	textBox1->Text = System::IO::Path::GetFileNameWithoutExtension(currentPlaylist->Tracks[index]);
+}
 System::Void WinformCplusplus::MyForm::button1_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	if (IsPlaying())
@@ -33,7 +45,11 @@ System::Void WinformCplusplus::MyForm::LoadPlaylist(String^ filePath)
 	currentPlaylist = serializer->Deserialize<Playlist^>(json);  
 	currentPlaylistPath = filePath;                              
 
-	RefreshComboBox();                                           
+	RefreshComboBox();        
+	if (currentPlaylist->Tracks->Count > 0)
+		comboBox1->SelectedIndex = 0;   
+	else
+		SelectTrack(-1);                
 }
 
 System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
@@ -43,7 +59,10 @@ System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Objec
 	ofd->Filter = "Playlist (*.json)|*.json";
 
 	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
 		LoadPlaylist(ofd->FileName);
+		comboBox1_SelectedIndexChanged(sender,e);
+	}
 }
 
 System::Void WinformCplusplus::MyForm::comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e)
@@ -53,15 +72,17 @@ System::Void WinformCplusplus::MyForm::comboBox1_SelectedIndexChanged(System::Ob
 	int index = comboBox1->SelectedIndex;
 	if (index < 0) return;
 
-	// Dernière entrée : "+ Ajouter une musique"
 	if (index == currentPlaylist->Tracks->Count)
 	{
 		AddTrack();
 		comboBox1->SelectedIndex = -1;
 		return;
 	}
+	else
+	{
+		SelectTrack(index);
+	}
 
-	// Chemin complet de la piste choisie
 	String^ fullPath = System::IO::Path::Combine(Application::StartupPath, currentPlaylist->Tracks[index]);
 
 	if (!System::IO::File::Exists(fullPath))

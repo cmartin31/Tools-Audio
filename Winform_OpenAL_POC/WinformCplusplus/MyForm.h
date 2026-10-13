@@ -72,9 +72,8 @@ namespace WinformCplusplus {
 	private: System::String^ currentPlaylistPath;
 
 	private: System::ComponentModel::IContainer^ components;
-
-
-
+	private: System::Void SelectTrack(int index);
+	private: int currentIndex;
 
 
 	private:
