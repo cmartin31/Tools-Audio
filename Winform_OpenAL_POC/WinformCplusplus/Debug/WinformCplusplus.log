@@ -4,4 +4,4 @@ Framework.obj : warning LNK4248: jeton typeref non résolu (0100001C) pour 'ALCd
 aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001B) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
 Framework.obj : warning LNK4248: jeton typeref non résolu (0100001B) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
 aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001C) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
-  WinformCplusplus.vcxproj -> C:\Users\Etudiant1\Documents\GitHub\Tools-Audio\Winform_OpenAL_POC\Debug\WinformCplusplus.exe
+  WinformCplusplus.vcxproj -> D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\Debug\WinformCplusplus.exe

@@ -214,9 +214,12 @@ System::Void WinformCplusplus::MyForm::button4_Click(System::Object^ sender, Sys
 
 System::Void WinformCplusplus::MyForm::NextMusic(System::Object^ sender, System::EventArgs^ e)
 {
+	int count = currentPlaylist->Tracks->Count;
+	if (count == 0) return;
+
 	int index = comboBox1->SelectedIndex;
 
-	if (index > comboBox1->Items->Count) return;
-	SelectTrack(index + 1);
+	if (index >= count - 1) return;
+
 	comboBox1->SelectedIndex++;
 }
