@@ -25,50 +25,25 @@ System::Void WinformCplusplus::MyForm::button1_Click(System::Object^ sender, Sys
 	}
 }
 
+System::Void WinformCplusplus::MyForm::LoadPlaylist(String^ filePath)
+{
+	String^ json = System::IO::File::ReadAllText(filePath, System::Text::Encoding::UTF8);
+	auto serializer = gcnew System::Web::Script::Serialization::JavaScriptSerializer();
+
+	currentPlaylist = serializer->Deserialize<Playlist^>(json);  
+	currentPlaylistPath = filePath;                              
+
+	RefreshComboBox();                                           
+}
+
 System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	/*OpenFileDialog^ ofd = gcnew OpenFileDialog();
-
-	ofd->Filter = "ogg/wav files (*.ogg);(*.wav)|*.ogg;*.wav|All files (*.*)|*.*";
-
-	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		msclr::interop::marshal_context context;
-		const char* filePath = context.marshal_as<const char*>(ofd->FileName);
-		Stop();
-		button1->Text = L"▶";
-		Play(filePath);
-		String^ musicName = System::IO::Path::GetFileNameWithoutExtension(ofd->FileName);
-		textBox1->Text = musicName;
-		trackBar1->Maximum = (int)(GetDuration() * 1000);
-		trackBar1->Value = 0;
-	}*/
-
 	OpenFileDialog^ ofd = gcnew OpenFileDialog();
-
-	ofd->Filter = "jason files (*.json)|*.json;|All files (*.*)|*.*";
+	ofd->InitialDirectory = System::IO::Path::Combine(Application::StartupPath, "Data Json Playlist");
+	ofd->Filter = "Playlist (*.json)|*.json";
 
 	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		String^ json = System::IO::File::ReadAllText(ofd->FileName, System::Text::Encoding::UTF8);
-		auto serializer = gcnew System::Web::Script::Serialization::JavaScriptSerializer();
-		auto obj = safe_cast<System::Collections::Generic::Dictionary<String^, Object^>^>(
-			serializer->DeserializeObject(json));
-
-		// "Tracks" est un tableau : on le lit comme une simple énumération
-		auto tracks = safe_cast<System::Collections::IEnumerable^>(obj["Tracks"]);
-
-		comboBox1->Items->Clear();
-		for each(Object ^ entry in tracks)
-		{
-			comboBox1->Items->Add(entry->ToString());
-		}
-
-		if (comboBox1->Items->Count > 0)
-			comboBox1->SelectedIndex = 0;
-
-		RefreshComboBox();
-	}
+		LoadPlaylist(ofd->FileName);
 }
 
 System::Void WinformCplusplus::MyForm::comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e)

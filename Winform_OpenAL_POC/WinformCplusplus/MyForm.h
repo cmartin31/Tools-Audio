@@ -307,6 +307,8 @@ namespace WinformCplusplus {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 
+	private: System::Void LoadPlaylist(String^ filePath);
+
 	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void fichierToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
