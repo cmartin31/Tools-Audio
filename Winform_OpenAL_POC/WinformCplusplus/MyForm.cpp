@@ -74,6 +74,16 @@ System::Void WinformCplusplus::MyForm::trackBar1_MouseUp(System::Object^ sender,
 
 }
 
+System::Void WinformCplusplus::MyForm::SavePlayList()
+{
+
+}
+
+System::Void WinformCplusplus::MyForm::LoadPlaylist(String^ filePath)
+{
+
+}
+
 System::Void WinformCplusplus::MyForm::trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e)
 {
 	float v = trackBar2->Value / 100.0f;

@@ -1,5 +1,7 @@
-﻿#include "Player.h"
-#include <msclr/marshal.h>
+﻿#include <msclr/marshal.h>
+#include "Player.h"
+#include "Playlist.h"
+
 #define	WATER_STREAM_0		"Ruisseau_Escattes_01.wav"
 #define	WATER_STREAM_1		"Ruisseau_Escattes_02.wav"
 #pragma once
@@ -63,6 +65,8 @@ namespace WinformCplusplus {
 	private: System::Windows::Forms::Timer^ timer2;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -101,6 +105,7 @@ namespace WinformCplusplus {
 			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -243,7 +248,7 @@ namespace WinformCplusplus {
 			// 
 			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::Top;
 			this->textBox1->Enabled = false;
-			this->textBox1->Location = System::Drawing::Point(155, 102);
+			this->textBox1->Location = System::Drawing::Point(156, 115);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(405, 20);
 			this->textBox1->TabIndex = 8;
@@ -256,12 +261,25 @@ namespace WinformCplusplus {
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
 			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
 			// 
+			// comboBox1
+			// 
+			this->comboBox1->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(156, 114);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(420, 21);
+			this->comboBox1->TabIndex = 10;
+			this->comboBox1->Text = L"A mettre derriere";
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::comboBox1_SelectedIndexChanged);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(672, 357);
 			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->trackBar2);
@@ -288,6 +306,7 @@ namespace WinformCplusplus {
 
 	private: System::Void fichierToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e);
@@ -295,11 +314,14 @@ namespace WinformCplusplus {
 	private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void trackBar1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 	private: System::Void trackBar1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
-	
-private: System::Void trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e);
-private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	private: System::Void SavePlayList();
+	private: System::Void LoadPlaylist(String^ filePath);
+	private: System::Void trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }

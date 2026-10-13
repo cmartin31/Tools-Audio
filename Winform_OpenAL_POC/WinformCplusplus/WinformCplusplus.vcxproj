@@ -152,6 +152,7 @@
     </ClInclude>
     <ClInclude Include="Ogg.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Playlist.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
