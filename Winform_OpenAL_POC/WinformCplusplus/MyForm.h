@@ -324,7 +324,6 @@ namespace WinformCplusplus {
 	private: System::Void trackBar1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 	private: System::Void trackBar1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 	private: System::Void SavePlayList();
-	private: System::Void LoadPlaylist(String^ filePath);
 	private: System::Void trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}

@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\framework.cpp",
+        "Source": "d:\\svn\\eleves\\tools\\tools-audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\framework.cpp",
         "ProvidedModule": "",
         "Includes": [
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\windows.h",
@@ -240,7 +240,7 @@
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\stdio.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\corecrt_wstdio.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\corecrt_stdio_config.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\framework.h",
+            "d:\\svn\\eleves\\tools\\tools-audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\framework.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\io.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\corecrt_io.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\corecrt_share.h",
@@ -248,13 +248,13 @@
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\fcntl.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\conio.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\corecrt_wconio.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\include\\al.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\include\\alc.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\include\\efx.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\include\\efx-creative.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\include\\xram.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\cwaves.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\aldlist.h",
+            "d:\\svn\\eleves\\tools\\tools-audio\\winform_openal_poc\\winformcplusplus\\include\\al.h",
+            "d:\\svn\\eleves\\tools\\tools-audio\\winform_openal_poc\\winformcplusplus\\include\\alc.h",
+            "d:\\svn\\eleves\\tools\\tools-audio\\winform_openal_poc\\winformcplusplus\\include\\efx.h",
+            "d:\\svn\\eleves\\tools\\tools-audio\\winform_openal_poc\\winformcplusplus\\include\\efx-creative.h",
+            "d:\\svn\\eleves\\tools\\tools-audio\\winform_openal_poc\\winformcplusplus\\include\\xram.h",
+            "d:\\svn\\eleves\\tools\\tools-audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\cwaves.h",
+            "d:\\svn\\eleves\\tools\\tools-audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\aldlist.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vector",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\yvals_core.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\xkeycheck.h",
@@ -307,7 +307,7 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_string_view.hpp",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\iosfwd",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\cctype",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\loadoal.h"
+            "d:\\svn\\eleves\\tools\\tools-audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\loadoal.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

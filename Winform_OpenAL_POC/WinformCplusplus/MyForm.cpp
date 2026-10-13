@@ -27,7 +27,7 @@ System::Void WinformCplusplus::MyForm::button1_Click(System::Object^ sender, Sys
 
 System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	OpenFileDialog^ ofd = gcnew OpenFileDialog();
+	/*OpenFileDialog^ ofd = gcnew OpenFileDialog();
 
 	ofd->Filter = "ogg/wav files (*.ogg);(*.wav)|*.ogg;*.wav|All files (*.*)|*.*";
 
@@ -42,6 +42,32 @@ System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Objec
 		textBox1->Text = musicName;
 		trackBar1->Maximum = (int)(GetDuration() * 1000);
 		trackBar1->Value = 0;
+	}*/
+
+	OpenFileDialog^ ofd = gcnew OpenFileDialog();
+
+	ofd->Filter = "jason files (*.json)|*.json;|All files (*.*)|*.*";
+
+	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		String^ json = System::IO::File::ReadAllText(ofd->FileName, System::Text::Encoding::UTF8);
+		auto serializer = gcnew System::Web::Script::Serialization::JavaScriptSerializer();
+		auto obj = safe_cast<System::Collections::Generic::Dictionary<String^, Object^>^>(
+			serializer->DeserializeObject(json));
+
+		// "Tracks" est un tableau : on le lit comme une simple énumération
+		auto tracks = safe_cast<System::Collections::IEnumerable^>(obj["Tracks"]);
+
+		comboBox1->Items->Clear();
+		for each(Object ^ entry in tracks)
+		{
+			comboBox1->Items->Add(entry->ToString());
+		}
+
+		if (comboBox1->Items->Count > 0)
+			comboBox1->SelectedIndex = 0;
+
+		RefreshComboBox();
 	}
 }
 
@@ -50,11 +76,11 @@ System::Void WinformCplusplus::MyForm::comboBox1_SelectedIndexChanged(System::Ob
 	if (isRefreshingCombo) return;
 
 	int index = comboBox1->SelectedIndex;
-	if (index < 0) return;   
+	if (index < 0) return;
 
 	if (index == currentPlaylist->Tracks->Count)
 	{
-		AddTrack();                  
+		AddTrack();
 		comboBox1->SelectedIndex = -1;
 	}
 
@@ -65,10 +91,10 @@ System::Void WinformCplusplus::MyForm::RefreshComboBox()
 	isRefreshingCombo = true;
 
 	comboBox1->Items->Clear();
-	for each (String ^ track in currentPlaylist->Tracks)
+	for each(String ^ track in currentPlaylist->Tracks)
 		comboBox1->Items->Add(System::IO::Path::GetFileNameWithoutExtension(track));
 
-	comboBox1->Items->Add("+ Ajouter une musique");   
+	comboBox1->Items->Add("+ Ajouter une musique");
 
 	isRefreshingCombo = false;
 }
@@ -83,11 +109,11 @@ System::Void WinformCplusplus::MyForm::AddTrack()
 	ofd->Multiselect = true;
 
 	if (ofd->ShowDialog() != System::Windows::Forms::DialogResult::OK)
-		return;   
+		return;
 
 	String^ root = Application::StartupPath + "\\";
 
-	for each (String ^ file in ofd->FileNames)
+	for each(String ^ file in ofd->FileNames)
 	{
 		String^ path = file;
 		if (path->StartsWith(root, StringComparison::OrdinalIgnoreCase))
@@ -135,10 +161,6 @@ System::Void WinformCplusplus::MyForm::SavePlayList()
 	System::IO::File::WriteAllText(currentPlaylistPath, json);
 }
 
-System::Void WinformCplusplus::MyForm::LoadPlaylist(String^ filePath)
-{
-
-}
 
 System::Void WinformCplusplus::MyForm::trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e)
 {
