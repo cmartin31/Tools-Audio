@@ -12,6 +12,7 @@ namespace WinformCplusplus {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	bool isDraggingTimer;
 
 	/// <summary>
 	/// Description résumée de MyForm
@@ -58,6 +59,9 @@ namespace WinformCplusplus {
 	private: System::Windows::Forms::TrackBar^ trackBar2;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::Timer^ timer2;
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -67,7 +71,7 @@ namespace WinformCplusplus {
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -76,6 +80,7 @@ namespace WinformCplusplus {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -90,6 +95,8 @@ namespace WinformCplusplus {
 			this->trackBar2 = (gcnew System::Windows::Forms::TrackBar());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -136,26 +143,26 @@ namespace WinformCplusplus {
 			// openToolStripMenuItem
 			// 
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->openToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			this->openToolStripMenuItem->Text = L"Open Playlist";
 			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::openToolStripMenuItem_Click);
 			// 
 			// savePlaylistToolStripMenuItem
 			// 
 			this->savePlaylistToolStripMenuItem->Name = L"savePlaylistToolStripMenuItem";
-			this->savePlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->savePlaylistToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			this->savePlaylistToolStripMenuItem->Text = L"Save Playlist";
 			// 
 			// addPlaylistToolStripMenuItem
 			// 
 			this->addPlaylistToolStripMenuItem->Name = L"addPlaylistToolStripMenuItem";
-			this->addPlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->addPlaylistToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			this->addPlaylistToolStripMenuItem->Text = L"Add Playlist";
 			// 
 			// clearPlaylistToolStripMenuItem
 			// 
 			this->clearPlaylistToolStripMenuItem->Name = L"clearPlaylistToolStripMenuItem";
-			this->clearPlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->clearPlaylistToolStripMenuItem->Size = System::Drawing::Size(143, 22);
 			this->clearPlaylistToolStripMenuItem->Text = L"Clear Playlist";
 			// 
 			// button2
@@ -180,6 +187,9 @@ namespace WinformCplusplus {
 			this->trackBar1->Name = L"trackBar1";
 			this->trackBar1->Size = System::Drawing::Size(485, 45);
 			this->trackBar1->TabIndex = 4;
+			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar1_Scroll);
+			this->trackBar1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::trackBar1_MouseDown);
+			this->trackBar1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::trackBar1_MouseUp);
 			// 
 			// trackBar2
 			// 
@@ -216,6 +226,11 @@ namespace WinformCplusplus {
 			this->button4->TabIndex = 7;
 			this->button4->Text = L"⏮";
 			this->button4->UseVisualStyleBackColor = false;
+			// 
+			// timer1
+			// 
+			this->timer1->Enabled = true;
+			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
 			// 
 			// MyForm
 			// 
@@ -254,5 +269,10 @@ namespace WinformCplusplus {
 	}
 	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void trackBar1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void trackBar1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	
+};
 }

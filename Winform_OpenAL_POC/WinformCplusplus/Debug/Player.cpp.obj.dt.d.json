@@ -1,11 +1,11 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\player.cpp",
+        "Source": "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\player.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\player.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\framework.h",
+            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\player.h",
+            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\framework\\win32\\framework.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\windows.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\winapifamily.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\winpackagefamily.h",
@@ -249,11 +249,11 @@
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\fcntl.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\conio.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\ucrt\\corecrt_wconio.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\include\\al.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\include\\alc.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\include\\efx.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\include\\efx-creative.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\include\\xram.h"
+            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\include\\al.h",
+            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\include\\alc.h",
+            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\include\\efx.h",
+            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\include\\efx-creative.h",
+            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\include\\xram.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

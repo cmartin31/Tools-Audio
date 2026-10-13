@@ -4,5 +4,7 @@
 	int Play(const char * fileName);
 	int init();
 
-
+	float GetDuration();             
+	float GetPosition();             
+	void  SetPosition(float seconds);
 
