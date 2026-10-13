@@ -246,17 +246,8 @@ namespace WinformCplusplus {
 		Play(WATER_STREAM_0);
 		Play(WATER_STREAM_1);
 	}
-	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		OpenFileDialog^ ofd = gcnew OpenFileDialog();
+	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 
-		if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-		{
-			msclr::interop::marshal_context context;
-			const char* filePath = context.marshal_as<const char*>(ofd->FileName);
-			Play(filePath);
-		}
-	}
 	private: System::Void fichierToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
