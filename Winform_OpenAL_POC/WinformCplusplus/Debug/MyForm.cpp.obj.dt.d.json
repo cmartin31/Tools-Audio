@@ -1,11 +1,11 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\myform.cpp",
+        "Source": "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\myform.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\myform.h",
-            "d:\\svn\\eleves\\tools\\winform_openal_poc\\tools audio\\winform_openal_poc\\winformcplusplus\\player.h",
+            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\myform.h",
+            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\player.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\msclr\\marshal.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\windows.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\winapifamily.h",
