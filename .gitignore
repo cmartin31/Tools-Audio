@@ -28,7 +28,7 @@
 *.vs
 *.pdb
 *.command
-*.json
+*.resx
 
 # Executables
 *.exe

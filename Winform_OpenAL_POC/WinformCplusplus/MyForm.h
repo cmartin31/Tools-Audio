@@ -1,4 +1,5 @@
 ﻿#include "Player.h"
+#include <msclr/marshal.h>
 #define	WATER_STREAM_0		"Ruisseau_Escattes_01.wav"
 #define	WATER_STREAM_1		"Ruisseau_Escattes_02.wav"
 #pragma once
@@ -18,7 +19,7 @@ namespace WinformCplusplus {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-		
+
 		MyForm(void)
 		{
 			InitializeComponent();
@@ -27,7 +28,7 @@ namespace WinformCplusplus {
 			//
 			init();
 		}
-		
+
 
 	protected:
 		/// <summary>
@@ -41,11 +42,11 @@ namespace WinformCplusplus {
 			}
 		}
 
-	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	protected:
 
-	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
-	private: System::Windows::Forms::Button^  button1;
+	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
+	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ fichierToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ openToolStripMenuItem;
@@ -66,7 +67,7 @@ namespace WinformCplusplus {
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -135,26 +136,26 @@ namespace WinformCplusplus {
 			// openToolStripMenuItem
 			// 
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(143, 22);
+			this->openToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->openToolStripMenuItem->Text = L"Open Playlist";
 			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::openToolStripMenuItem_Click);
 			// 
 			// savePlaylistToolStripMenuItem
 			// 
 			this->savePlaylistToolStripMenuItem->Name = L"savePlaylistToolStripMenuItem";
-			this->savePlaylistToolStripMenuItem->Size = System::Drawing::Size(143, 22);
+			this->savePlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->savePlaylistToolStripMenuItem->Text = L"Save Playlist";
 			// 
 			// addPlaylistToolStripMenuItem
 			// 
 			this->addPlaylistToolStripMenuItem->Name = L"addPlaylistToolStripMenuItem";
-			this->addPlaylistToolStripMenuItem->Size = System::Drawing::Size(143, 22);
+			this->addPlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->addPlaylistToolStripMenuItem->Text = L"Add Playlist";
 			// 
 			// clearPlaylistToolStripMenuItem
 			// 
 			this->clearPlaylistToolStripMenuItem->Name = L"clearPlaylistToolStripMenuItem";
-			this->clearPlaylistToolStripMenuItem->Size = System::Drawing::Size(143, 22);
+			this->clearPlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->clearPlaylistToolStripMenuItem->Text = L"Clear Playlist";
 			// 
 			// button2
@@ -240,18 +241,27 @@ namespace WinformCplusplus {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		Play(WATER_STREAM_0);
 		Play(WATER_STREAM_1);
 	}
-	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		OpenFileDialog^ ofd = gcnew OpenFileDialog();
+
+		if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			msclr::interop::marshal_context context;
+			const char* filePath = context.marshal_as<const char*>(ofd->FileName);
+			Play(filePath);
+		}
 	}
-private: System::Void fichierToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	private: System::Void fichierToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }
