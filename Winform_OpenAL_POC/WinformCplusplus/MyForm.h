@@ -62,6 +62,7 @@ namespace WinformCplusplus {
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::Windows::Forms::Timer^ timer2;
 	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -99,6 +100,7 @@ namespace WinformCplusplus {
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -240,6 +242,7 @@ namespace WinformCplusplus {
 			// textBox1
 			// 
 			this->textBox1->Anchor = System::Windows::Forms::AnchorStyles::Top;
+			this->textBox1->Enabled = false;
 			this->textBox1->Location = System::Drawing::Point(155, 102);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(405, 20);
@@ -247,6 +250,11 @@ namespace WinformCplusplus {
 			this->textBox1->Text = L"Music Name";
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
+			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
 			// 
 			// MyForm
 			// 
