@@ -116,7 +116,7 @@ namespace WinformCplusplus {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(60, 60);
 			this->button1->TabIndex = 1;
-			this->button1->Text = L"⏸️";
+			this->button1->Text = L"▶";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 

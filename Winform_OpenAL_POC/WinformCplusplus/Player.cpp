@@ -43,7 +43,7 @@ void Resume()
 }
 
 bool IsPlaying()
-{
+{	
 	ALint etat = 0;
 	alGetSourcei(g_source, AL_SOURCE_STATE, &etat);
 	return etat == AL_PLAYING;
@@ -80,6 +80,8 @@ int Play(const char * fileName)
 	alSourcei(g_source, AL_LOOPING, 1);
 	// Play Source
 	alSourcePlay(g_source);
+
+	Pause();
 
 	/*
 	do
