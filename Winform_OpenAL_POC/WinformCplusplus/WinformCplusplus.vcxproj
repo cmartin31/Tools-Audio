@@ -139,6 +139,7 @@
     <ClCompile Include="framework\Win32\Framework.cpp" />
     <ClCompile Include="framework\Win32\LoadOAL.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="Ogg.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,12 +150,8 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Ogg.h" />
     <ClInclude Include="Player.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
