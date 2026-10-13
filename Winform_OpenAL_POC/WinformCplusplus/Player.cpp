@@ -4,6 +4,7 @@
 static ALuint g_source = 0;
 static ALuint g_buffer = 0;
 static float  g_duration = 0.0f;
+static float g_volume = 1.0f;
 
 int init() {
 	// Initialize Framework
@@ -40,6 +41,13 @@ void Pause()
 void Resume()
 {
 	alSourcePlay(g_source);  
+}
+
+void SetVolume(float volume)  
+{
+	g_volume = volume;
+	if (g_source != 0)
+		alSourcef(g_source, AL_GAIN, g_volume);
 }
 
 bool IsPlaying()
@@ -80,6 +88,7 @@ int Play(const char * fileName)
 
 	// Generate a Source to playback the Buffer
 	alGenSources(1, &g_source);
+	alSourcef(g_source, AL_GAIN, g_volume);
 
 	// Attach Source to Buffer
 	alSourcei(g_source, AL_BUFFER, g_buffer);

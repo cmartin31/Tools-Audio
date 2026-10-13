@@ -67,3 +67,9 @@ System::Void WinformCplusplus::MyForm::trackBar1_MouseUp(System::Object^ sender,
 	isDraggingTimer = false;
 
 }
+
+System::Void WinformCplusplus::MyForm::trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e)
+{
+	float v = trackBar2->Value / 100.0f;
+	SetVolume(v * v);
+}

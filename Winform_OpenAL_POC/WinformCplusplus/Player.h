@@ -10,5 +10,6 @@
 
 	void Pause();
 	void Resume();
+	void SetVolume(float volume);
 	bool IsPlaying();
 	void Stop();

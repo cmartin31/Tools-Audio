@@ -1,4 +1,10 @@
 ﻿  MyForm.cpp
+  Player.cpp
+C:\Users\Etudiant1\Documents\GitHub\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Player.cpp(69,14): warning C4101: 'uiBuffer' : variable locale non référencée
+C:\Users\Etudiant1\Documents\GitHub\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Player.cpp(71,14): warning C4101: 'iState' : variable locale non référencée
+C:\Users\Etudiant1\Documents\GitHub\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Player.cpp(70,14): warning C4101: 'uiSource' : variable locale non référencée
+  Génération de code en cours...
+C:\Users\Etudiant1\Documents\GitHub\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Player.cpp(17,1): warning C4715: 'init' : les chemins de contrôle ne retournent pas tous une valeur
   aldlist.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
 Framework.obj : warning LNK4248: jeton typeref non résolu (0100001C) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
 aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001B) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter

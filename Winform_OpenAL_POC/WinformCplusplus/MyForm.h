@@ -199,6 +199,8 @@ namespace WinformCplusplus {
 			this->trackBar2->Orientation = System::Windows::Forms::Orientation::Vertical;
 			this->trackBar2->Size = System::Drawing::Size(45, 104);
 			this->trackBar2->TabIndex = 5;
+			this->trackBar2->Value = 50;
+			this->trackBar2->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar2_Scroll);
 			// 
 			// button3
 			// 
@@ -270,5 +272,6 @@ namespace WinformCplusplus {
 	private: System::Void trackBar1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 	private: System::Void trackBar1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 	
+private: System::Void trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e);
 };
 }
