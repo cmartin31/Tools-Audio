@@ -229,6 +229,7 @@ namespace WinformCplusplus {
 			this->button3->TabIndex = 6;
 			this->button3->Text = L"⏭";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::NextMusic);
 			// 
 			// button4
 			// 
@@ -335,5 +336,9 @@ namespace WinformCplusplus {
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void savePlaylistToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
-	};
+
+
+
+	private: System::Void NextMusic(System::Object^ sender, System::EventArgs^ e);
+};
 }

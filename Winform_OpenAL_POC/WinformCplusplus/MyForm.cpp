@@ -205,3 +205,48 @@ System::Void WinformCplusplus::MyForm::savePlaylistToolStripMenuItem_Click(Syste
 		SavePlayList();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+System::Void WinformCplusplus::MyForm::NextMusic(System::Object^ sender, System::EventArgs^ e)
+{
+	int index = comboBox1->SelectedIndex;
+
+	if (index > comboBox1->Items->Count) return;
+	SelectTrack(index + 1);
+	comboBox1->SelectedIndex++;
+	
+}
