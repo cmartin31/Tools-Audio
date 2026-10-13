@@ -256,27 +256,15 @@ namespace WinformCplusplus {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 
-		if (IsPlaying())
-		{
-			Pause();
-			button1->Text = L"▶";  
-		}
-		else
-		{
-			Resume();
-			button1->Text = L"⏸"; 
-		}
-	}
 	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void fichierToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
+	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void trackBar1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);

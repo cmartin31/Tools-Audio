@@ -49,6 +49,13 @@ bool IsPlaying()
 	return etat == AL_PLAYING;
 }
 
+void Stop()
+{
+	Pause();
+	g_duration = 0.f;
+	SetPosition(g_duration);
+}
+
 int Play(const char * fileName)
 {
 	ALuint      uiBuffer;

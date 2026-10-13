@@ -11,3 +11,4 @@
 	void Pause();
 	void Resume();
 	bool IsPlaying();
+	void Stop();

@@ -1,4 +1,4 @@
-#include "MyForm.h"
+﻿#include "MyForm.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -8,7 +8,21 @@ void Main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	WinformCplusplus::MyForm form;
-	Application::Run(%form);
+	Application::Run(% form);
+}
+
+System::Void WinformCplusplus::MyForm::button1_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	if (IsPlaying())
+	{
+		Pause();
+		button1->Text = L"▶";
+	}
+	else
+	{
+		Resume();
+		button1->Text = L"⏸";
+	}
 }
 
 System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
@@ -20,9 +34,15 @@ System::Void WinformCplusplus::MyForm::openToolStripMenuItem_Click(System::Objec
 		msclr::interop::marshal_context context;
 		const char* filePath = context.marshal_as<const char*>(ofd->FileName);
 		Play(filePath);
-		trackBar1->Maximum = (int)(GetDuration() * 1000); 
+		trackBar1->Maximum = (int)(GetDuration() * 1000);
 		trackBar1->Value = 0;
 	}
+}
+
+System::Void WinformCplusplus::MyForm::button2_Click_1(System::Object^ sender, System::EventArgs^ e)
+{
+	Stop();
+	button1->Text = L"▶";
 }
 
 System::Void WinformCplusplus::MyForm::timer1_Tick(System::Object^ sender, System::EventArgs^ e)
