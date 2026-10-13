@@ -53,12 +53,36 @@ System::Void WinformCplusplus::MyForm::comboBox1_SelectedIndexChanged(System::Ob
 	int index = comboBox1->SelectedIndex;
 	if (index < 0) return;
 
+	// Dernière entrée : "+ Ajouter une musique"
 	if (index == currentPlaylist->Tracks->Count)
 	{
 		AddTrack();
 		comboBox1->SelectedIndex = -1;
+		return;
 	}
 
+	// Chemin complet de la piste choisie
+	String^ fullPath = System::IO::Path::Combine(Application::StartupPath, currentPlaylist->Tracks[index]);
+
+	if (!System::IO::File::Exists(fullPath))
+	{
+		MessageBox::Show("Fichier introuvable :\n" + fullPath);
+		return;
+	}
+
+	msclr::interop::marshal_context context;
+	const char* filePath = context.marshal_as<const char*>(fullPath);
+
+	Stop();
+	Play(filePath);
+	button1->Text = L"▶";
+
+	textBox1->Text = System::IO::Path::GetFileNameWithoutExtension(fullPath);
+
+	int duree = (int)(GetDuration() * 1000);
+	if (duree < trackBar1->Minimum) duree = trackBar1->Minimum;
+	trackBar1->Maximum = duree;
+	trackBar1->Value = trackBar1->Minimum;
 }
 
 System::Void WinformCplusplus::MyForm::RefreshComboBox()
