@@ -208,8 +208,11 @@ System::Void WinformCplusplus::MyForm::savePlaylistToolStripMenuItem_Click(Syste
 
 System::Void WinformCplusplus::MyForm::button4_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	if (comboBox1->SelectedIndex > 0)SelectTrack(comboBox1->SelectedIndex - 1);
-	comboBox1->SelectedIndex--;
+	if (comboBox1->SelectedIndex > 0)
+	{
+		SelectTrack(comboBox1->SelectedIndex - 1);
+		comboBox1->SelectedIndex--;
+	}
 }
 
 System::Void WinformCplusplus::MyForm::NextMusic(System::Object^ sender, System::EventArgs^ e)
@@ -220,6 +223,5 @@ System::Void WinformCplusplus::MyForm::NextMusic(System::Object^ sender, System:
 	int index = comboBox1->SelectedIndex;
 
 	if (index >= count - 1) return;
-
 	comboBox1->SelectedIndex++;
 }
