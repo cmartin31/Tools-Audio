@@ -116,7 +116,7 @@ namespace WinformCplusplus {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(60, 60);
 			this->button1->TabIndex = 1;
-			this->button1->Text = L"▶";
+			this->button1->Text = L"⏸️";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -258,8 +258,16 @@ namespace WinformCplusplus {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		Play(WATER_STREAM_0);
-		Play(WATER_STREAM_1);
+		if (IsPlaying())
+		{
+			Pause();
+			button1->Text = L"▶";  
+		}
+		else
+		{
+			Resume();
+			button1->Text = L"⏸"; 
+		}
 	}
 	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 

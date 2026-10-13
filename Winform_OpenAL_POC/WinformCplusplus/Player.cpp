@@ -32,6 +32,23 @@ void SetPosition(float seconds)
 	alSourcef(g_source, AL_SEC_OFFSET, seconds);
 }
 
+void Pause()
+{
+	alSourcePause(g_source);
+}
+
+void Resume()
+{
+	alSourcePlay(g_source);  
+}
+
+bool IsPlaying()
+{
+	ALint etat = 0;
+	alGetSourcei(g_source, AL_SOURCE_STATE, &etat);
+	return etat == AL_PLAYING;
+}
+
 int Play(const char * fileName)
 {
 	ALuint      uiBuffer;

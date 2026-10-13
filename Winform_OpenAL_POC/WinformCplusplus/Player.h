@@ -8,3 +8,6 @@
 	float GetPosition();             
 	void  SetPosition(float seconds);
 
+	void Pause();
+	void Resume();
+	bool IsPlaying();
