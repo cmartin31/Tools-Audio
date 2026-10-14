@@ -1,7 +1,7 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\myform.h",
+        "Source": "d:\\perso\\tools-audio\\winform_openal_poc\\winformcplusplus\\myform.h",
         "ProvidedModule": "",
         "Includes": [
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\msclr\\marshal.h",
@@ -295,8 +295,8 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vcclr.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\gcroot.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\msclr\\gcroot.h",
-            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\player.h",
-            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\playlist.h"
+            "d:\\perso\\tools-audio\\winform_openal_poc\\winformcplusplus\\player.h",
+            "d:\\perso\\tools-audio\\winform_openal_poc\\winformcplusplus\\playlist.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

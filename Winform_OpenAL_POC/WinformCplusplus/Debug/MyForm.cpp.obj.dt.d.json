@@ -1,10 +1,10 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\myform.cpp",
+        "Source": "d:\\perso\\tools-audio\\winform_openal_poc\\winformcplusplus\\myform.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\myform.h",
+            "d:\\perso\\tools-audio\\winform_openal_poc\\winformcplusplus\\myform.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\msclr\\marshal.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\um\\windows.h",
             "c:\\program files (x86)\\windows kits\\10\\include\\10.0.26100.0\\shared\\winapifamily.h",
@@ -296,8 +296,8 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vcclr.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\gcroot.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\msclr\\gcroot.h",
-            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\player.h",
-            "c:\\users\\etudiant1\\documents\\github\\tools-audio\\winform_openal_poc\\winformcplusplus\\playlist.h"
+            "d:\\perso\\tools-audio\\winform_openal_poc\\winformcplusplus\\player.h",
+            "d:\\perso\\tools-audio\\winform_openal_poc\\winformcplusplus\\playlist.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
