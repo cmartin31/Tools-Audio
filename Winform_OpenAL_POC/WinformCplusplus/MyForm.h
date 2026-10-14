@@ -240,6 +240,7 @@ namespace WinformCplusplus {
 			this->trackBar1->TabIndex = 4;
 			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar1_Scroll);
 			this->trackBar1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::trackBar1_MouseDown);
+			this->trackBar1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::trackBar1_MouseMove);
 			this->trackBar1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::trackBar1_MouseUp);
 			// 
 			// trackBar2
@@ -486,6 +487,8 @@ namespace WinformCplusplus {
 	private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void trackBar1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 	private: System::Void trackBar1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void trackBar1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void SeekToMouse(int x);
 	private: System::Void SavePlayList();
 	private: System::Void trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {

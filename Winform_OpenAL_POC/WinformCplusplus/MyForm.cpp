@@ -401,6 +401,35 @@ System::Void WinformCplusplus::MyForm::trackBar1_Scroll(System::Object^ sender, 
 System::Void WinformCplusplus::MyForm::trackBar1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
 {
 	isDraggingTimer = true;
+	if (e->Button == System::Windows::Forms::MouseButtons::Left)
+		SeekToMouse(e->X);
+}
+
+System::Void WinformCplusplus::MyForm::trackBar1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
+{
+	// Bouton gauche enfoncé : le curseur suit la souris
+	if (e->Button == System::Windows::Forms::MouseButtons::Left)
+		SeekToMouse(e->X);
+}
+
+// Place le curseur de la barre (et la lecture) à l'endroit cliqué
+System::Void WinformCplusplus::MyForm::SeekToMouse(int x)
+{
+	// Le curseur ne va pas jusqu'aux bords du TrackBar : on retire environ sa demi-largeur de chaque côté
+	const int margin = 13;
+	int usable = trackBar1->Width - 2 * margin;
+	if (usable <= 0)
+		return;
+
+	double ratio = (double)(x - margin) / usable;
+	ratio = Math::Max(0.0, Math::Min(1.0, ratio));
+
+	int value = trackBar1->Minimum + (int)Math::Round(ratio * (trackBar1->Maximum - trackBar1->Minimum));
+	if (value == trackBar1->Value)
+		return;
+
+	trackBar1->Value = value;
+	SetPosition(value / 1000.0f);
 }
 
 System::Void WinformCplusplus::MyForm::trackBar1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
