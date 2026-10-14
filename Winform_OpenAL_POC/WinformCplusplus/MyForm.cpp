@@ -181,13 +181,9 @@ static double ReadTrackDuration(String^ path)
 
 System::Void WinformCplusplus::MyForm::SetupTrackList()
 {
-	// Les réglages et les événements de la liste sont dans le Designer (InitializeComponent).
-	// Ici, seulement ce que le Designer ne sait pas faire.
 
 	listViewTracks->GetType()->GetProperty("DoubleBuffered",
 		Reflection::BindingFlags::Instance | Reflection::BindingFlags::NonPublic)->SetValue(listViewTracks, true, nullptr);
-
-	// Largeur initiale de la colonne TITRE
 	listViewTracks_Resize(nullptr, nullptr);
 }
 
