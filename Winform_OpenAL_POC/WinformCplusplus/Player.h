@@ -13,3 +13,6 @@
 	void SetVolume(float volume);
 	bool IsPlaying();
 	void Stop();
+	bool IsFinished();
+	bool IsLooping();
+	void SetLooping(bool _setLoop);

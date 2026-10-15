@@ -81,6 +81,12 @@ namespace WinformCplusplus {
 	private: System::Windows::Forms::ColumnHeader^ columnTitle;
 	private: System::Windows::Forms::ColumnHeader^ columnDuration;
 	private: System::Windows::Forms::ImageList^ imageListRowHeight;
+	private: System::Windows::Forms::Button^ LoopButton;
+	private: System::Windows::Forms::Label^ SonText;
+	private: System::Windows::Forms::Label^ TimerUpdateText;
+	private: System::Windows::Forms::Label^ TimerText;
+
+
 
 
 
@@ -103,7 +109,6 @@ namespace WinformCplusplus {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -129,6 +134,10 @@ namespace WinformCplusplus {
 			this->labelPlaylist = (gcnew System::Windows::Forms::TextBox());
 			this->buttonAddTrack = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->LoopButton = (gcnew System::Windows::Forms::Button());
+			this->SonText = (gcnew System::Windows::Forms::Label());
+			this->TimerUpdateText = (gcnew System::Windows::Forms::Label());
+			this->TimerText = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar2))->BeginInit();
@@ -152,7 +161,7 @@ namespace WinformCplusplus {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Segoe UI Symbol", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::SystemColors::Control;
-			this->button1->Location = System::Drawing::Point(615, 614);
+			this->button1->Location = System::Drawing::Point(602, 614);
 			this->button1->Margin = System::Windows::Forms::Padding(0);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(60, 60);
@@ -221,7 +230,7 @@ namespace WinformCplusplus {
 			this->button2->Font = (gcnew System::Drawing::Font(L"Segoe UI Symbol", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::SystemColors::Control;
-			this->button2->Location = System::Drawing::Point(691, 614);
+			this->button2->Location = System::Drawing::Point(662, 614);
 			this->button2->Margin = System::Windows::Forms::Padding(0);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(60, 60);
@@ -250,9 +259,9 @@ namespace WinformCplusplus {
 			this->trackBar2->Maximum = 100;
 			this->trackBar2->Name = L"trackBar2";
 			this->trackBar2->Orientation = System::Windows::Forms::Orientation::Vertical;
-			this->trackBar2->Size = System::Drawing::Size(45, 104);
+			this->trackBar2->Size = System::Drawing::Size(45, 188);
 			this->trackBar2->TabIndex = 5;
-			this->trackBar2->Value = 50;
+			this->trackBar2->Value = 100;
 			this->trackBar2->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar2_Scroll);
 			// 
 			// button3
@@ -269,7 +278,7 @@ namespace WinformCplusplus {
 			this->button3->Font = (gcnew System::Drawing::Font(L"Segoe UI Symbol", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button3->ForeColor = System::Drawing::SystemColors::Control;
-			this->button3->Location = System::Drawing::Point(764, 614);
+			this->button3->Location = System::Drawing::Point(783, 614);
 			this->button3->Margin = System::Windows::Forms::Padding(0);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(60, 60);
@@ -293,7 +302,7 @@ namespace WinformCplusplus {
 			this->textBox1->ForeColor = System::Drawing::SystemColors::Window;
 			this->textBox1->Location = System::Drawing::Point(381, 581);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(575, 30);
+			this->textBox1->Size = System::Drawing::Size(612, 30);
 			this->textBox1->TabIndex = 8;
 			this->textBox1->Text = L"No Current Music ";
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -317,7 +326,7 @@ namespace WinformCplusplus {
 			});
 			this->listViewTracks->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->listViewTracks->ForeColor = System::Drawing::Color::White;
+			this->listViewTracks->ForeColor = System::Drawing::Color::WhiteSmoke;
 			this->listViewTracks->FullRowSelect = true;
 			this->listViewTracks->HeaderStyle = System::Windows::Forms::ColumnHeaderStyle::Nonclickable;
 			this->listViewTracks->HideSelection = false;
@@ -415,7 +424,7 @@ namespace WinformCplusplus {
 			this->button4->Font = (gcnew System::Drawing::Font(L"Segoe UI Symbol", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button4->ForeColor = System::Drawing::SystemColors::Control;
-			this->button4->Location = System::Drawing::Point(539, 614);
+			this->button4->Location = System::Drawing::Point(542, 614);
 			this->button4->Margin = System::Windows::Forms::Padding(0);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(60, 60);
@@ -424,6 +433,64 @@ namespace WinformCplusplus {
 			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::lastTrack);
 			// 
+			// LoopButton
+			// 
+			this->LoopButton->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
+			this->LoopButton->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->LoopButton->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->LoopButton->FlatAppearance->BorderSize = 0;
+			this->LoopButton->FlatAppearance->MouseDownBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)),
+				static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(52)));
+			this->LoopButton->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(32)),
+				static_cast<System::Int32>(static_cast<System::Byte>(32)), static_cast<System::Int32>(static_cast<System::Byte>(36)));
+			this->LoopButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->LoopButton->Font = (gcnew System::Drawing::Font(L"Segoe UI Symbol", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->LoopButton->ForeColor = System::Drawing::SystemColors::Control;
+			this->LoopButton->Location = System::Drawing::Point(722, 614);
+			this->LoopButton->Margin = System::Windows::Forms::Padding(0);
+			this->LoopButton->Name = L"LoopButton";
+			this->LoopButton->Size = System::Drawing::Size(60, 60);
+			this->LoopButton->TabIndex = 15;
+			this->LoopButton->Text = L"🔁";
+			this->LoopButton->UseVisualStyleBackColor = false;
+			this->LoopButton->Click += gcnew System::EventHandler(this, &MyForm::LoopButton_Click);
+			// 
+			// SonText
+			// 
+			this->SonText->AutoSize = true;
+			this->SonText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->SonText->Location = System::Drawing::Point(5, 237);
+			this->SonText->Name = L"SonText";
+			this->SonText->Size = System::Drawing::Size(55, 39);
+			this->SonText->TabIndex = 17;
+			this->SonText->Text = L"🔊";
+			// 
+			// TimerUpdateText
+			// 
+			this->TimerUpdateText->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
+			this->TimerUpdateText->AutoSize = true;
+			this->TimerUpdateText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->TimerUpdateText->Location = System::Drawing::Point(329, 677);
+			this->TimerUpdateText->Name = L"TimerUpdateText";
+			this->TimerUpdateText->Size = System::Drawing::Size(46, 25);
+			this->TimerUpdateText->TabIndex = 19;
+			this->TimerUpdateText->Text = L"--:--";
+			// 
+			// TimerText
+			// 
+			this->TimerText->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
+			this->TimerText->AutoSize = true;
+			this->TimerText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->TimerText->Location = System::Drawing::Point(999, 677);
+			this->TimerText->Name = L"TimerText";
+			this->TimerText->Size = System::Drawing::Size(46, 25);
+			this->TimerText->TabIndex = 20;
+			this->TimerText->Text = L"--:--";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -431,6 +498,10 @@ namespace WinformCplusplus {
 			this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1373, 716);
+			this->Controls->Add(this->TimerText);
+			this->Controls->Add(this->TimerUpdateText);
+			this->Controls->Add(this->SonText);
+			this->Controls->Add(this->LoopButton);
 			this->Controls->Add(this->buttonAddTrack);
 			this->Controls->Add(this->labelPlaylist);
 			this->Controls->Add(this->listViewTracks);
@@ -443,8 +514,8 @@ namespace WinformCplusplus {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->menuStrip1);
 			this->ForeColor = System::Drawing::SystemColors::Control;
-			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
+			this->MinimumSize = System::Drawing::Size(800, 500);
 			this->Name = L"MyForm";
 			this->Text = L"Audio Playlist Maker";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
@@ -474,7 +545,7 @@ namespace WinformCplusplus {
 	private: System::Void listViewTracks_DoubleClick(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void listViewTracks_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e);
 	private: System::Void listViewTracks_DrawColumnHeader(System::Object^ sender, System::Windows::Forms::DrawListViewColumnHeaderEventArgs^ e);
-	private: System::Void listViewTracks_DrawItem(System::Object^ sender, System::Windows::Forms::DrawListViewItemEventArgs^ e){}
+	private: System::Void listViewTracks_DrawItem(System::Object^ sender, System::Windows::Forms::DrawListViewItemEventArgs^ e) {}
 	private: System::Void listViewTracks_DrawSubItem(System::Object^ sender, System::Windows::Forms::DrawListViewSubItemEventArgs^ e);
 	private: System::Void listViewTracks_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 	private: System::Void listViewTracks_MouseLeave(System::Object^ sender, System::EventArgs^ e);
@@ -492,6 +563,7 @@ namespace WinformCplusplus {
 	private: System::Void trackBar1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 	private: System::Void SeekToMouse(int x);
 	private: System::Void SavePlayList();
+	private: System::Void UpdateVolume(float volume);
 	private: System::Void trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -503,5 +575,8 @@ namespace WinformCplusplus {
 	private: System::Void lastTrack(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void NextMusic(System::Object^ sender, System::EventArgs^ e);
 
+	private: System::Void LoopButton_Click(System::Object^ sender, System::EventArgs^ e);
+
 };
 }
+

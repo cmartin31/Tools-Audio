@@ -7,6 +7,7 @@ static ALuint g_source = 0;
 static ALuint g_buffer = 0;
 static float  g_duration = 0.0f;
 static float g_volume = 1.0f;
+bool looping = false;
 
 int init() {
 	// Initialize Framework
@@ -149,6 +150,34 @@ void Stop()
 	SetPosition(g_duration);
 }
 
+bool IsFinished()
+{
+	if (g_source == 0) return false;
+	ALint etat = 0;
+	alGetSourcei(g_source, AL_SOURCE_STATE, &etat);
+	return etat == AL_STOPPED;
+}
+
+bool IsLooping()
+{
+	return looping;
+}
+
+void SetLooping(bool _setLoop)
+{
+	if(_setLoop)
+	{
+		looping = true;
+		alSourcei(g_source, AL_LOOPING, 1);
+	}
+	else
+	{
+		looping = false;
+		alSourcei(g_source, AL_LOOPING, 0);
+	}
+}
+
+
 int Play(const char* fileName)
 {
 	ALuint      uiBuffer;
@@ -192,7 +221,6 @@ int Play(const char* fileName)
 	// Attach Source to Buffer
 	alSourcei(g_source, AL_BUFFER, g_buffer);
 	//pour boucler un son
-	alSourcei(g_source, AL_LOOPING, 1);
 
 
 	return 0;

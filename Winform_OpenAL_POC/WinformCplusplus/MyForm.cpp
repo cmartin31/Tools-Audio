@@ -12,6 +12,7 @@ void Main(array<String^>^ args) {
 
 }
 
+
 System::Void WinformCplusplus::MyForm::SelectTrack(int index)
 {
 	if (index < 0 || index >= currentPlaylist->Tracks->Count)
@@ -34,7 +35,7 @@ System::Void WinformCplusplus::MyForm::button1_Click(System::Object^ sender, Sys
 	else
 	{
 		Resume();
-		button1->Text =L"";
+		button1->Text = L"";
 	}
 }
 
@@ -43,7 +44,7 @@ System::Void WinformCplusplus::MyForm::LoadPlaylist(String^ filePath)
 	String^ json = System::IO::File::ReadAllText(filePath, System::Text::Encoding::UTF8);
 	auto serializer = gcnew System::Web::Script::Serialization::JavaScriptSerializer();
 
-	currentPlaylist = serializer->Deserialize<Playlist^>(json);  
+	currentPlaylist = serializer->Deserialize<Playlist^>(json);
 	currentPlaylistPath = filePath;
 
 	if (String::IsNullOrEmpty(currentPlaylist->Name))
@@ -83,7 +84,7 @@ System::Void WinformCplusplus::MyForm::AddTrack()
 
 	String^ root = Application::StartupPath + "\\";
 
-	for each(String ^ file in ofd->FileNames)
+	for each (String ^ file in ofd->FileNames)
 	{
 		String^ path = file;
 		if (path->StartsWith(root, StringComparison::OrdinalIgnoreCase))
@@ -239,7 +240,8 @@ bool WinformCplusplus::MyForm::LoadTrack(int index)
 	if (duree < trackBar1->Minimum) duree = trackBar1->Minimum;
 	trackBar1->Maximum = duree;
 	trackBar1->Value = trackBar1->Minimum;
-
+	TimerText->Text = FormatDuration(GetDuration());
+	
 	listViewTracks->Items[index]->Selected = true;
 	listViewTracks->EnsureVisible(index);
 	listViewTracks->Invalidate();
@@ -252,7 +254,7 @@ System::Void WinformCplusplus::MyForm::PlayTrack(int index)
 		return;
 
 	Resume();
-	button1->Text =L"";
+	button1->Text = L"";
 }
 
 System::Void WinformCplusplus::MyForm::listViewTracks_DoubleClick(System::Object^ sender, System::EventArgs^ e)
@@ -281,11 +283,11 @@ System::Void WinformCplusplus::MyForm::listViewTracks_DrawColumnHeader(System::O
 		align = TextFormatFlags::Right;
 
 	Drawing::Font headerFont("Segoe UI", 8, Drawing::FontStyle::Bold);
-	TextRenderer::DrawText(e->Graphics, e->Header->Text, %headerFont, Drawing::Rectangle::Inflate(e->Bounds, -8, 0), DZ_GREY,
+	TextRenderer::DrawText(e->Graphics, e->Header->Text, % headerFont, Drawing::Rectangle::Inflate(e->Bounds, -8, 0), DZ_GREY,
 		align | TextFormatFlags::VerticalCenter);
 
 	Pen line(DZ_LINE);
-	e->Graphics->DrawLine(%line, e->Bounds.Left, e->Bounds.Bottom - 1, e->Bounds.Right, e->Bounds.Bottom - 1);
+	e->Graphics->DrawLine(% line, e->Bounds.Left, e->Bounds.Bottom - 1, e->Bounds.Right, e->Bounds.Bottom - 1);
 }
 
 System::Void WinformCplusplus::MyForm::listViewTracks_DrawSubItem(System::Object^ sender, System::Windows::Forms::DrawListViewSubItemEventArgs^ e)
@@ -304,7 +306,7 @@ System::Void WinformCplusplus::MyForm::listViewTracks_DrawSubItem(System::Object
 		backColor = DZ_HOVER;
 
 	SolidBrush back(backColor);
-	e->Graphics->FillRectangle(%back, bounds);
+	e->Graphics->FillRectangle(% back, bounds);
 
 	String^ text = e->SubItem->Text;
 	Drawing::Color fore = Drawing::Color::White;
@@ -386,17 +388,36 @@ System::Void WinformCplusplus::MyForm::button2_Click_1(System::Object^ sender, S
 	button1->Text = L"▶";
 }
 
-System::Void WinformCplusplus::MyForm::timer1_Tick(System::Object^ sender, System::EventArgs^ e)
-{
-	int pos = (int)(GetPosition() * 1000);
-	if (pos <= trackBar1->Maximum && !isDraggingTimer)
-		trackBar1->Value = pos;
-}
-
 System::Void WinformCplusplus::MyForm::trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e)
 {
 	SetPosition(trackBar1->Value / 1000.0f);
 }
+
+System::Void WinformCplusplus::MyForm::timer1_Tick(System::Object^ sender, System::EventArgs^ e)
+{
+	if (IsFinished())
+	{
+
+		if (IsLooping())
+		{
+			SetPosition(0);
+			Resume();
+		}
+		else
+		{
+			NextMusic(sender, e);
+		}
+		return;
+	}
+	int pos = (int)(GetPosition() * 1000);
+	if (pos <= trackBar1->Maximum)
+	{
+		TimerUpdateText->Text = FormatDuration(trackBar1->Value / (1000));
+		trackBar1->Value = pos;
+	}
+}
+
+
 
 System::Void WinformCplusplus::MyForm::trackBar1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
 {
@@ -407,15 +428,12 @@ System::Void WinformCplusplus::MyForm::trackBar1_MouseDown(System::Object^ sende
 
 System::Void WinformCplusplus::MyForm::trackBar1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
 {
-	// Bouton gauche enfoncé : le curseur suit la souris
 	if (e->Button == System::Windows::Forms::MouseButtons::Left)
 		SeekToMouse(e->X);
 }
 
-// Place le curseur de la barre (et la lecture) à l'endroit cliqué
 System::Void WinformCplusplus::MyForm::SeekToMouse(int x)
 {
-	// Le curseur ne va pas jusqu'aux bords du TrackBar : on retire environ sa demi-largeur de chaque côté
 	const int margin = 13;
 	int usable = trackBar1->Width - 2 * margin;
 	if (usable <= 0)
@@ -445,11 +463,31 @@ System::Void WinformCplusplus::MyForm::SavePlayList()
 	System::IO::File::WriteAllText(currentPlaylistPath, json);
 }
 
+System::Void WinformCplusplus::MyForm::UpdateVolume(float volume)
+{
+	if (volume <= 100 && volume > 75)
+	{
+		SonText->Text = System::Char::ConvertFromUtf32(0x1F50A);
+	}
+	else if (volume <= 75 && volume > 25)
+	{
+		SonText->Text = System::Char::ConvertFromUtf32(0x1F509);
+	}
+	else if (volume <= 25 && volume > 0)
+	{
+		SonText->Text = System::Char::ConvertFromUtf32(0x1F508);
+	}
+	else
+	{
+		SonText->Text = System::Char::ConvertFromUtf32(0x1F507);
+	}
+}
 
 System::Void WinformCplusplus::MyForm::trackBar2_Scroll(System::Object^ sender, System::EventArgs^ e)
 {
 	float v = trackBar2->Value / 100.0f;
 	SetVolume(v * v);
+	UpdateVolume(trackBar2->Value);
 }
 
 System::Void WinformCplusplus::MyForm::savePlaylistToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
@@ -482,3 +520,18 @@ System::Void WinformCplusplus::MyForm::NextMusic(System::Object^ sender, System:
 	if (currentIndex < currentPlaylist->Tracks->Count - 1)
 		PlayTrack(currentIndex + 1);
 }
+
+System::Void WinformCplusplus::MyForm::LoopButton_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	SetLooping(!IsLooping());
+	if (IsLooping())
+	{
+		LoopButton->Text = System::Char::ConvertFromUtf32(0x1F502);
+	}
+	else
+	{
+		LoopButton->Text = System::Char::ConvertFromUtf32(0x1F501);
+	}
+}
+
+
