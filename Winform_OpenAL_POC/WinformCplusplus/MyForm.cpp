@@ -534,4 +534,13 @@ System::Void WinformCplusplus::MyForm::LoopButton_Click(System::Object^ sender, 
 	}
 }
 
+System::Void WinformCplusplus::MyForm::clearPlaylistToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	currentPlaylist->Tracks->Clear();
+	currentPlaylist->Name = "Playlist";
+	textBox1->Text = "No Current Music";
+	RefreshTrackList();
+	Stop();
+}
+
 

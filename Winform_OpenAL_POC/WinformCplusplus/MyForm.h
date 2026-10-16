@@ -194,28 +194,29 @@ namespace WinformCplusplus {
 			// openToolStripMenuItem
 			// 
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(143, 22);
+			this->openToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->openToolStripMenuItem->Text = L"Open Playlist";
 			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::openToolStripMenuItem_Click);
 			// 
 			// savePlaylistToolStripMenuItem
 			// 
 			this->savePlaylistToolStripMenuItem->Name = L"savePlaylistToolStripMenuItem";
-			this->savePlaylistToolStripMenuItem->Size = System::Drawing::Size(143, 22);
+			this->savePlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->savePlaylistToolStripMenuItem->Text = L"Save Playlist";
 			this->savePlaylistToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::savePlaylistToolStripMenuItem_Click);
 			// 
 			// addPlaylistToolStripMenuItem
 			// 
 			this->addPlaylistToolStripMenuItem->Name = L"addPlaylistToolStripMenuItem";
-			this->addPlaylistToolStripMenuItem->Size = System::Drawing::Size(143, 22);
+			this->addPlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->addPlaylistToolStripMenuItem->Text = L"Add Playlist";
 			// 
 			// clearPlaylistToolStripMenuItem
 			// 
 			this->clearPlaylistToolStripMenuItem->Name = L"clearPlaylistToolStripMenuItem";
-			this->clearPlaylistToolStripMenuItem->Size = System::Drawing::Size(143, 22);
+			this->clearPlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->clearPlaylistToolStripMenuItem->Text = L"Clear Playlist";
+			this->clearPlaylistToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::clearPlaylistToolStripMenuItem_Click);
 			// 
 			// button2
 			// 
@@ -579,6 +580,7 @@ namespace WinformCplusplus {
 
 	private: System::Void LoopButton_Click(System::Object^ sender, System::EventArgs^ e);
 
+private: System::Void clearPlaylistToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
 
