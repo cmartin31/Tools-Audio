@@ -36,9 +36,27 @@ namespace WinformCplusplus {
 			SetupTrackList();
 			RefreshTrackList();
 		}
-
+	private:
+		[System::Runtime::InteropServices::DllImport("dwmapi.dll")]
+			static int DwmSetWindowAttribute(IntPtr hwnd, int attr, int% attrValue, int attrSize);
 
 	protected:
+		virtual void OnHandleCreated(EventArgs^ e) override
+		{
+			Form::OnHandleCreated(e);
+
+			int useDark = 1;
+			// 20 = mode sombre (Win10 20H1+ / Win11), 19 = anciennes versions de Win10
+			if (DwmSetWindowAttribute(this->Handle, 20, useDark, sizeof(int)) != 0)
+				DwmSetWindowAttribute(this->Handle, 19, useDark, sizeof(int));
+
+			// Noir pur + texte blanc (Windows 11 uniquement, ignoré sinon)
+			int black = 0x00000000;
+			int white = 0x00FFFFFF;
+			DwmSetWindowAttribute(this->Handle, 35, black, sizeof(int));
+			DwmSetWindowAttribute(this->Handle, 36, white, sizeof(int));
+		}
+
 		/// <summary>
 		/// Nettoyage des ressources utilisées.
 		/// </summary>
@@ -161,7 +179,7 @@ namespace WinformCplusplus {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Segoe UI Symbol", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::SystemColors::Control;
-			this->button1->Location = System::Drawing::Point(602, 614);
+			this->button1->Location = System::Drawing::Point(608, 609);
 			this->button1->Margin = System::Windows::Forms::Padding(0);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(60, 60);
@@ -172,19 +190,22 @@ namespace WinformCplusplus {
 			// 
 			// menuStrip1
 			// 
+			this->menuStrip1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->fichierToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1373, 24);
+			this->menuStrip1->Size = System::Drawing::Size(1384, 24);
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// fichierToolStripMenuItem
 			// 
+			this->fichierToolStripMenuItem->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->fichierToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->openToolStripMenuItem,
 					this->savePlaylistToolStripMenuItem, this->clearPlaylistToolStripMenuItem
 			});
+			this->fichierToolStripMenuItem->ForeColor = System::Drawing::SystemColors::Control;
 			this->fichierToolStripMenuItem->Name = L"fichierToolStripMenuItem";
 			this->fichierToolStripMenuItem->Size = System::Drawing::Size(37, 20);
 			this->fichierToolStripMenuItem->Text = L"File";
@@ -225,7 +246,7 @@ namespace WinformCplusplus {
 			this->button2->Font = (gcnew System::Drawing::Font(L"Segoe UI Symbol", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::SystemColors::Control;
-			this->button2->Location = System::Drawing::Point(662, 614);
+			this->button2->Location = System::Drawing::Point(668, 609);
 			this->button2->Margin = System::Windows::Forms::Padding(0);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(60, 60);
@@ -238,7 +259,7 @@ namespace WinformCplusplus {
 			// 
 			this->trackBar1->Anchor = System::Windows::Forms::AnchorStyles::Bottom;
 			this->trackBar1->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->trackBar1->Location = System::Drawing::Point(381, 677);
+			this->trackBar1->Location = System::Drawing::Point(387, 672);
 			this->trackBar1->Maximum = 10000;
 			this->trackBar1->Name = L"trackBar1";
 			this->trackBar1->Size = System::Drawing::Size(612, 45);
@@ -273,7 +294,7 @@ namespace WinformCplusplus {
 			this->button3->Font = (gcnew System::Drawing::Font(L"Segoe UI Symbol", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button3->ForeColor = System::Drawing::SystemColors::Control;
-			this->button3->Location = System::Drawing::Point(783, 614);
+			this->button3->Location = System::Drawing::Point(789, 609);
 			this->button3->Margin = System::Windows::Forms::Padding(0);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(60, 60);
@@ -295,7 +316,7 @@ namespace WinformCplusplus {
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox1->ForeColor = System::Drawing::SystemColors::Window;
-			this->textBox1->Location = System::Drawing::Point(381, 581);
+			this->textBox1->Location = System::Drawing::Point(387, 576);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(612, 30);
 			this->textBox1->TabIndex = 8;
@@ -329,7 +350,7 @@ namespace WinformCplusplus {
 			this->listViewTracks->MultiSelect = false;
 			this->listViewTracks->Name = L"listViewTracks";
 			this->listViewTracks->OwnerDraw = true;
-			this->listViewTracks->Size = System::Drawing::Size(1193, 448);
+			this->listViewTracks->Size = System::Drawing::Size(1204, 443);
 			this->listViewTracks->SmallImageList = this->imageListRowHeight;
 			this->listViewTracks->TabIndex = 11;
 			this->listViewTracks->UseCompatibleStateImageBehavior = false;
@@ -375,7 +396,7 @@ namespace WinformCplusplus {
 			this->labelPlaylist->Font = (gcnew System::Drawing::Font(L"Segoe UI", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->labelPlaylist->ForeColor = System::Drawing::Color::White;
-			this->labelPlaylist->Location = System::Drawing::Point(538, 55);
+			this->labelPlaylist->Location = System::Drawing::Point(544, 55);
 			this->labelPlaylist->Name = L"labelPlaylist";
 			this->labelPlaylist->ReadOnly = true;
 			this->labelPlaylist->Size = System::Drawing::Size(285, 25);
@@ -395,7 +416,7 @@ namespace WinformCplusplus {
 			this->buttonAddTrack->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->buttonAddTrack->ForeColor = System::Drawing::Color::White;
-			this->buttonAddTrack->Location = System::Drawing::Point(1224, 54);
+			this->buttonAddTrack->Location = System::Drawing::Point(1235, 54);
 			this->buttonAddTrack->Margin = System::Windows::Forms::Padding(0);
 			this->buttonAddTrack->Name = L"buttonAddTrack";
 			this->buttonAddTrack->Size = System::Drawing::Size(125, 21);
@@ -419,7 +440,7 @@ namespace WinformCplusplus {
 			this->button4->Font = (gcnew System::Drawing::Font(L"Segoe UI Symbol", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button4->ForeColor = System::Drawing::SystemColors::Control;
-			this->button4->Location = System::Drawing::Point(542, 614);
+			this->button4->Location = System::Drawing::Point(548, 609);
 			this->button4->Margin = System::Windows::Forms::Padding(0);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(60, 60);
@@ -442,7 +463,7 @@ namespace WinformCplusplus {
 			this->LoopButton->Font = (gcnew System::Drawing::Font(L"Segoe UI Symbol", 30, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->LoopButton->ForeColor = System::Drawing::SystemColors::Control;
-			this->LoopButton->Location = System::Drawing::Point(722, 614);
+			this->LoopButton->Location = System::Drawing::Point(728, 609);
 			this->LoopButton->Margin = System::Windows::Forms::Padding(0);
 			this->LoopButton->Name = L"LoopButton";
 			this->LoopButton->Size = System::Drawing::Size(60, 60);
@@ -468,7 +489,7 @@ namespace WinformCplusplus {
 			this->TimerUpdateText->AutoSize = true;
 			this->TimerUpdateText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TimerUpdateText->Location = System::Drawing::Point(329, 677);
+			this->TimerUpdateText->Location = System::Drawing::Point(335, 672);
 			this->TimerUpdateText->Name = L"TimerUpdateText";
 			this->TimerUpdateText->Size = System::Drawing::Size(46, 25);
 			this->TimerUpdateText->TabIndex = 19;
@@ -480,7 +501,7 @@ namespace WinformCplusplus {
 			this->TimerText->AutoSize = true;
 			this->TimerText->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TimerText->Location = System::Drawing::Point(999, 677);
+			this->TimerText->Location = System::Drawing::Point(1005, 672);
 			this->TimerText->Name = L"TimerText";
 			this->TimerText->Size = System::Drawing::Size(46, 25);
 			this->TimerText->TabIndex = 20;
@@ -492,7 +513,7 @@ namespace WinformCplusplus {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1373, 716);
+			this->ClientSize = System::Drawing::Size(1384, 711);
 			this->Controls->Add(this->TimerText);
 			this->Controls->Add(this->TimerUpdateText);
 			this->Controls->Add(this->SonText);
