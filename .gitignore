@@ -30,7 +30,6 @@
 *.resx
 
 # Executables
-*.exe
 *.out
 *.app
 Winform_OpenAL_POC/WinformCplusplus/WinformCplusplus.vcxproj
