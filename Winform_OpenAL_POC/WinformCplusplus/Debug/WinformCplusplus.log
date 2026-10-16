@@ -1,8 +1,32 @@
-﻿  MyForm.cpp
+﻿C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(551,5): warning MSB8028: Le répertoire intermédiaire (Debug\) contient des fichiers partagés provenant d'un autre projet (WinformCplusplus.vcxproj). Cela peut entraîner un comportement de nettoyage et de regénération incorrect.
+  aldlist.cpp
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\framework\Win32\aldlist.cpp(42,19): warning C4858: abandon de la valeur retournée : This member function returns a bool indicating whether the collection is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\framework\Win32\aldlist.cpp(133,41): warning C4858: abandon de la valeur retournée : This member function returns a bool indicating whether the collection is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\framework\Win32\aldlist.cpp(138,19): warning C4858: abandon de la valeur retournée : This member function returns a bool indicating whether the collection is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
+  CWaves.cpp
+  Framework.cpp
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\framework\Win32\Framework.cpp(210,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  LoadOAL.cpp
+  MyForm.cpp
 D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\MyForm.cpp(490,24): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  Ogg.cpp
+  Player.cpp
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Player.cpp(43,16): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Player.cpp(183,14): warning C4101: 'uiBuffer' : variable locale non référencée
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Player.cpp(185,14): warning C4101: 'iState' : variable locale non référencée
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Player.cpp(184,14): warning C4101: 'uiSource' : variable locale non référencée
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Génération de code en cours...
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\Player.cpp(30,1): warning C4715: 'init' : les chemins de contrôle ne retournent pas tous une valeur
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\framework\Win32\Framework.cpp(200,1): warning C4793: 'ALFWprintf' : fonction compilée en tant que code natif :
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\framework\Win32\Framework.cpp(200,1): warning C4793: 	varargs non pris en charge sous /clr
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\framework\Win32\Framework.cpp(202,1): warning C4793: 'ALFWprintf' : fonction compilée en tant que code natif :
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\framework\Win32\Framework.cpp(202,1): warning C4793: 	un intrinsèque non pris en charge a été trouvé dans le code managé
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\framework\Win32\Framework.cpp(204,1): warning C4793: 'ALFWprintf' : fonction compilée en tant que code natif :
+D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\WinformCplusplus\framework\Win32\Framework.cpp(204,1): warning C4793: 	un intrinsèque non pris en charge a été trouvé dans le code managé
   aldlist.obj : module MSIL détecté ; liens incrémentiels désactivés pour MSIL ; édition de liens complète en cours
 Framework.obj : warning LNK4248: jeton typeref non résolu (0100001C) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
 aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001B) pour 'ALCdevice_struct' ; l'image risque de ne pas s'exécuter
 Framework.obj : warning LNK4248: jeton typeref non résolu (0100001B) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
 aldlist.obj : warning LNK4248: jeton typeref non résolu (0100001C) pour 'ALCcontext_struct' ; l'image risque de ne pas s'exécuter
-  WinformCplusplus.vcxproj -> D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\Debug\WinformCplusplus.exe
+  WinformCplusplus.vcxproj -> D:\SVN\Eleves\Tools\Tools-Audio\Winform_OpenAL_POC\Debug\AudioPlaylistMaker.exe

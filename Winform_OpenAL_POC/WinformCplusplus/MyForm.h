@@ -59,7 +59,7 @@ namespace WinformCplusplus {
 	private: System::Windows::Forms::ToolStripMenuItem^ fichierToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ openToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ savePlaylistToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ addPlaylistToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ clearPlaylistToolStripMenuItem;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::TrackBar^ trackBar1;
@@ -117,7 +117,6 @@ namespace WinformCplusplus {
 			this->fichierToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->openToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->savePlaylistToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->addPlaylistToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->clearPlaylistToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->trackBar1 = (gcnew System::Windows::Forms::TrackBar());
@@ -182,9 +181,9 @@ namespace WinformCplusplus {
 			// 
 			// fichierToolStripMenuItem
 			// 
-			this->fichierToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->fichierToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->openToolStripMenuItem,
-					this->savePlaylistToolStripMenuItem, this->addPlaylistToolStripMenuItem, this->clearPlaylistToolStripMenuItem
+					this->savePlaylistToolStripMenuItem, this->clearPlaylistToolStripMenuItem
 			});
 			this->fichierToolStripMenuItem->Name = L"fichierToolStripMenuItem";
 			this->fichierToolStripMenuItem->Size = System::Drawing::Size(37, 20);
@@ -204,12 +203,6 @@ namespace WinformCplusplus {
 			this->savePlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->savePlaylistToolStripMenuItem->Text = L"Save Playlist";
 			this->savePlaylistToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::savePlaylistToolStripMenuItem_Click);
-			// 
-			// addPlaylistToolStripMenuItem
-			// 
-			this->addPlaylistToolStripMenuItem->Name = L"addPlaylistToolStripMenuItem";
-			this->addPlaylistToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->addPlaylistToolStripMenuItem->Text = L"Add Playlist";
 			// 
 			// clearPlaylistToolStripMenuItem
 			// 
